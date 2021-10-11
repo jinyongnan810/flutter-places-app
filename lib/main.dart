@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/screens/place_list_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,24 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Great Places App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Great Places App'),
-      ),
-      body: Center(
-        child: Text('Great Places'),
-      ),
+      theme: ThemeData(primarySwatch: Colors.indigo, accentColor: Colors.amber),
+      home: PlaceListScreen(),
     );
   }
 }
