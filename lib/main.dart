@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/providers/great_places.dart';
+import 'package:places/screens/add_place_screen.dart';
 import 'package:places/screens/place_list_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
         theme:
             ThemeData(primarySwatch: Colors.indigo, accentColor: Colors.amber),
         home: PlaceListScreen(),
+        routes: {
+          AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+        },
       ),
     );
   }
