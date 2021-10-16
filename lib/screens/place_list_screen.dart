@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:places/components/place_item.dart';
+import 'package:places/providers/great_places.dart';
 import 'package:places/screens/add_place_screen.dart';
+import 'package:provider/provider.dart';
 
 class PlaceListScreen extends StatelessWidget {
   @override
@@ -16,7 +19,20 @@ class PlaceListScreen extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Consumer<GreatPlaces>(
+          child: Center(
+            child: Text('No places yet.'),
+          ),
+          builder: (ctx, places, ch) {
+            if (places.places.length == 0) {
+              return ch!;
+            }
+            return ListView.builder(
+              itemBuilder: (ctx, index) => PlaceItem(places.get(index)),
+              itemCount: places.places.length,
+            );
+          },
+        ),
       ),
     );
   }

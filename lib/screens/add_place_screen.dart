@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:places/components/image_input.dart';
+import 'package:places/providers/great_places.dart';
+import 'package:provider/provider.dart';
 
 class AddPlaceScreen extends StatefulWidget {
   static final String routeName = '/add-place';
@@ -10,10 +14,24 @@ class AddPlaceScreen extends StatefulWidget {
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final _titleController = TextEditingController();
+  File? _image;
   @override
   void dispose() {
     _titleController.dispose();
     super.dispose();
+  }
+
+  void _saveImage(File image) {
+    this._image = image;
+  }
+
+  void _save() {
+    if (_titleController.text.isEmpty || _image == null) {
+      return;
+    }
+
+    Provider.of<GreatPlaces>(context, listen: false)
+        .add(_titleController.text, _image!);
   }
 
   @override
@@ -40,14 +58,17 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    ImageInput()
+                    ImageInput(_saveImage)
                   ],
                 ),
               ),
             ),
           ),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              _save();
+              Navigator.of(context).pop();
+            },
             icon: Icon(Icons.add),
             label: Text('Add Place'),
             style: ButtonStyle(
