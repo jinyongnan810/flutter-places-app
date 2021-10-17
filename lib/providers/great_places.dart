@@ -29,8 +29,7 @@ class GreatPlaces with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> add(String title, File image) async {
-    final location = PlaceLocation(longitude: 10, latitude: 10);
+  Future<void> add(String title, File image, PlaceLocation location) async {
     final newPlace = Place(
         id: Random().nextInt(100000).toString(),
         title: title,
