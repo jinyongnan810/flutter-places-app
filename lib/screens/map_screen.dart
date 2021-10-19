@@ -3,28 +3,55 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:places/models/place.dart';
 
 class MapScreen extends StatefulWidget {
-  PlaceLocation initialLocation;
+  LatLng initialLocation;
   bool isSetting;
   MapScreen(
-      {this.initialLocation =
-          const PlaceLocation(longitude: 139.70, latitude: 35.82),
+      {this.initialLocation = const LatLng(139.70, 35.82),
       this.isSetting = false});
   @override
   _MapScreenState createState() => _MapScreenState();
 }
 
 class _MapScreenState extends State<MapScreen> {
+  LatLng? location;
+  void onTapMap(LatLng pos) {
+    setState(() {
+      this.location = pos;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Map'),
+        title: Text('Your Map'),
+        actions: widget.isSetting
+            ? [
+                IconButton(
+                    onPressed: this.location == null
+                        ? null
+                        : () {
+                            Navigator.of(context).pop(this.location);
+                          },
+                    icon: Icon(Icons.check)),
+              ]
+            : [],
       ),
       body: GoogleMap(
-          initialCameraPosition: CameraPosition(
-              target: LatLng(widget.initialLocation.latitude,
-                  widget.initialLocation.longitude),
-              zoom: 16)),
+        initialCameraPosition: CameraPosition(
+            target: LatLng(widget.initialLocation.latitude,
+                widget.initialLocation.longitude),
+            zoom: 16),
+        onTap: widget.isSetting ? onTapMap : null,
+        markers: this.location == null
+            ? {}
+            : {
+                Marker(
+                    markerId: MarkerId('A'),
+                    position: LatLng(
+                        this.location!.latitude, this.location!.longitude))
+              },
+      ),
     );
   }
 }

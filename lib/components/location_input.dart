@@ -1,3 +1,4 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   final Location location = Location();
   String? _previewImage;
+  LatLng? _selectedPos;
   Future<void> _getCurrentLocation() async {
     try {
       final locData = await location.getLocation();
@@ -26,20 +28,30 @@ class _LocationInputState extends State<LocationInput> {
       setState(() {
         _previewImage = previewImage;
       });
+      _selectedPos = LatLng(locData.latitude!, locData.longitude!);
     } catch (err) {
       print('no permission to location');
     }
   }
 
   Future<void> _selectOnMap() async {
-    final location = await Navigator.of(context).push(MaterialPageRoute(
+    LatLng? pos = await Navigator.of(context).push(MaterialPageRoute(
         fullscreenDialog: true,
         builder: (ctx) => MapScreen(
+              initialLocation: _selectedPos!,
               isSetting: true,
             )));
-    if (location == null) {
+    if (pos == null) {
       return;
     }
+    widget._saveLocation(
+        PlaceLocation(latitude: pos.latitude, longitude: pos.longitude));
+    final previewImage = LocationHelper.generateLocationPreviewImage(
+        latitude: pos.latitude, longtitude: pos.longitude);
+    setState(() {
+      _previewImage = previewImage;
+    });
+    _selectedPos = pos;
   }
 
   @override
