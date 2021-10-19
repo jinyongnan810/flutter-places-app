@@ -11,6 +11,7 @@ class PlaceItem extends StatelessWidget {
         backgroundImage: FileImage(this.place.image),
       ),
       title: Text(this.place.title),
+      subtitle: Text(this.place.location.address ?? ''),
       onTap: () {},
     );
   }

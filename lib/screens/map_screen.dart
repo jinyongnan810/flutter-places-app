@@ -6,7 +6,7 @@ class MapScreen extends StatefulWidget {
   LatLng initialLocation;
   bool isSetting;
   MapScreen(
-      {this.initialLocation = const LatLng(139.70, 35.82),
+      {this.initialLocation = const LatLng(35.82, 139.70),
       this.isSetting = false});
   @override
   _MapScreenState createState() => _MapScreenState();

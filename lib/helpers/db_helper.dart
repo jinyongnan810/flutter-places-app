@@ -7,7 +7,7 @@ class DBHelper {
     final db = await sql.openDatabase(path.join(dbPath, 'places.db'),
         onCreate: (db, version) {
       return db.execute(
-          'CREATE TABLE places(id TEXT PRIMARY KEY, title TEXT, image TEXT)');
+          'CREATE TABLE places(id TEXT PRIMARY KEY, title TEXT, image TEXT, loc_lat REAL, loc_lng REAL, loc_address TEXT)');
     }, version: 1);
     return db;
   }
