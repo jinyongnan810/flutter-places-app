@@ -3,6 +3,7 @@ import 'package:location/location.dart';
 import 'package:flutter/material.dart';
 import 'package:places/helpers/location_helper.dart';
 import 'package:places/models/place.dart';
+import 'package:places/screens/map_screen.dart';
 
 class LocationInput extends StatefulWidget {
   Function _saveLocation;
@@ -27,6 +28,17 @@ class _LocationInputState extends State<LocationInput> {
       });
     } catch (err) {
       print('no permission to location');
+    }
+  }
+
+  Future<void> _selectOnMap() async {
+    final location = await Navigator.of(context).push(MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (ctx) => MapScreen(
+              isSetting: true,
+            )));
+    if (location == null) {
+      return;
     }
   }
 
@@ -59,7 +71,9 @@ class _LocationInputState extends State<LocationInput> {
                 icon: Icon(Icons.location_on),
                 label: Text('Current Location')),
             TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  _selectOnMap();
+                },
                 icon: Icon(Icons.map),
                 label: Text('Find On Map')),
           ],
