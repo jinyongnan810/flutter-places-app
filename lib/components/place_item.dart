@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/models/place.dart';
+import 'package:places/screens/place_detail_screen.dart';
 
 class PlaceItem extends StatelessWidget {
   Place place;
@@ -12,7 +13,10 @@ class PlaceItem extends StatelessWidget {
       ),
       title: Text(this.place.title),
       subtitle: Text(this.place.location.address ?? ''),
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(PlaceDetailScreen.routeName, arguments: this.place.id);
+      },
     );
   }
 }

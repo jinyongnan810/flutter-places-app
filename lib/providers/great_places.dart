@@ -17,6 +17,10 @@ class GreatPlaces with ChangeNotifier {
     return _places[index];
   }
 
+  Place getById(String id) {
+    return _places.firstWhere((element) => element.id == id);
+  }
+
   Future<void> load() async {
     final items = await DBHelper.fetchAll('places');
     if (items.isEmpty) return;

@@ -44,7 +44,12 @@ class _MapScreenState extends State<MapScreen> {
             zoom: 16),
         onTap: widget.isSetting ? onTapMap : null,
         markers: this.location == null
-            ? {}
+            ? {
+                Marker(
+                    markerId: MarkerId('A'),
+                    position: LatLng(widget.initialLocation.latitude,
+                        widget.initialLocation.longitude))
+              }
             : {
                 Marker(
                     markerId: MarkerId('A'),
