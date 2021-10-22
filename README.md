@@ -1,16 +1,14 @@
-# places
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Demo 5 [Great Places App](https://github.com/jinyongnan810/flutter-places-app)
+- [Place List Screen](https://github.com/jinyongnan810/flutter-places-app/blob/master/lib/screens/place_list_screen.dart)
+![image](https://res.cloudinary.com/dsiz9ikkt/image/upload/v1634887202/rxnur6shl3govz3swzob.png)
+- [Place Detail Screen](https://github.com/jinyongnan810/flutter-places-app/blob/master/lib/screens/place_detail_screen.dart)
+![image](https://res.cloudinary.com/dsiz9ikkt/image/upload/v1634887426/nltel1agk4wv8r7l5bdn.png)
+- [Add Place Screen](https://github.com/jinyongnan810/flutter-places-app/blob/master/lib/screens/add_place_screen.dart)
+![image](https://res.cloudinary.com/dsiz9ikkt/image/upload/v1634887310/euaxdfya0xb6jbskv6ez.png)
+- [Map Screen](https://github.com/jinyongnan810/flutter-places-app/blob/master/lib/screens/map_screen.dart)
+![image](https://res.cloudinary.com/dsiz9ikkt/image/upload/v1634887461/jlxftgwjwphuqfip7lep.png)
+- [Take Picture](https://github.com/jinyongnan810/flutter-places-app/commit/8493eec8d4735c9990cf9d3248babbf3b5850277)
+- [Save File](https://github.com/jinyongnan810/flutter-places-app/commit/2ee6eb873b4b1fed4e057b1c85c55e15468c40be)
+- [Save Data to sqlite](https://github.com/jinyongnan810/flutter-places-app/commit/e8b5779db101d1aca96da1c31830df2fc6632d29)
+- [Get current location & Map Preview Image](https://github.com/jinyongnan810/flutter-places-app/commit/f14f34a803a28877c682d8b0b28d8c0d2369bb36)
+- [Dynamic Google Map](https://github.com/jinyongnan810/flutter-places-app/commit/5fe8d92c37b198e2a9c2cd3533d292a53fb36e41), and [tap and select location](https://github.com/jinyongnan810/flutter-places-app/commit/b0952f097fbfbf7e4a02035071514da5b5362115), and [get address text from lat&lng](https://github.com/jinyongnan810/flutter-places-app/commit/dd19d0813916552ad1908285786be936c42810f7)
